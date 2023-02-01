@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VueJs Computed and Method example</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
+  </head>
+  <body>
+    <div id="app">
+      FirstName: <input type = "text" v-model = "firstname" /> <br/><br/>
+      LastName: <input type = "text" v-model = "lastname"/> <br/><br/>
+      <h1>My name is {{ firstname }} {{ lastname }}</h1>
+      <h1>Using computed method: {{ getfullname }}</h1>
+    </div>
+
+    <script>
+      const { createApp } = Vue;
+
+      var app = createApp({
+        data() {
+          return {
+            firstname: "",
+            lastname: "",
+            birthyear: ""
+          }
+        },
+        computed: {
+          getfullname: function(){
+            return this.firstname +" "+ this.lastname;
+          }
+        }
+      }).mount('#app');
+        
+    </script>
+  </body>   
+</html>

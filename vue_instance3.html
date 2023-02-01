@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example Vue Application</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
+  </head>
+  <body>
+    <div id="app">
+      <h1>Firstname: {{ firstname }}</h1>
+      <h1>Lastname: {{ lastname }}</h1>
+      <h1>{{ details() }}</h1>
+    </div>
+    
+    <script>
+      const { createApp } = Vue;
+      var app = createApp({
+        data() {
+          return {
+            firstname: "Vinent",
+            lastname: "Mercadal",
+            address: "Ramis"
+          }
+        },
+        methods: {
+          details: function() {
+            console.log(this);
+            return "I am "+this.firstname +" "+ this.lastname;
+          }
+        }
+      }).mount('#app');
+      
+      console.log(app.firstname);
+      console.log(app.$data);
+      console.log(app.$data.firstname);
+    </script>
+  </body>   
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VueJs Computed and Method example</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
+  </head>
+  <body>
+    <div id="app">
+      <div id = "computed_props">
+        <h1 style = "background-color:gray;">Random Num from computed property: {{ getrandomnum }}</h1>
+        <h1>Random Num from method: {{ getrandomnum1() }}</h1>
+        <h1>Random Num from method: {{ getrandomnum1() }}</h1>
+        <h1 style = "background-color:gray;">Random Num from computed property: {{ getrandomnum }}</h1>
+        <h1 style = "background-color:gray;">Random Num from computed property: {{ getrandomnum }}</h1>
+        <h1 style = "background-color:gray;">Random Num from computed property: {{ getrandomnum }}</h1>
+        <h1>Random Num from method: {{ getrandomnum1() }}</h1>
+        <h1>Random Num from method: {{ getrandomnum1() }}</h1>
+      </div>  
+    </div>
+
+    <script>
+      const { createApp } = Vue;
+
+      var app = createApp({
+        data() {
+          return {
+          }
+        },
+        methods: {
+          getrandomnum1 : function() {
+            return Math.random();
+          }
+        },
+        computed :{
+          getrandomnum : function(){
+            return Math.random();
+          }
+        }
+      }).mount('#app');
+        
+    </script>
+  </body>   
+</html>
