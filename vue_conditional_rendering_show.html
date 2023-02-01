@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VueJs Conditional rendering</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
+  </head>
+  <body>    
+    <div id = "app">
+      <button v-on:click="showdata" v-bind:style="styleobj">Click Me</button>
+      <span style="font-size:25px;"><b>{{ show }}</b></span>
+      <h1 v-if="show">This is h1 tag</h1>
+      <h2 v-else>This is h2 tag</h2>
+      <div v-show="show">
+        <b>V-Show:</b>
+        <img src = "images/img.jpg" width = "150" height = "100" />
+      </div>
+    </div>
+
+    <script>
+      const { createApp } = Vue;
+
+      var app = createApp({
+        data() {
+          return {
+            show: true,
+            styleobj: {
+              backgroundColor: '#2196F3!important',
+              cursor: 'pointer',
+              padding: '8px 16px',
+              verticalAlign: 'middle',
+              marginRight: '10px',
+            }
+          }
+        },
+        methods: {
+          showdata: function() {
+            this.show = !this.show;
+          }
+        }
+      }).mount('#app');        
+    </script>
+  </body>   
+</html>

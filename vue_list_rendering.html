@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VueJs List rendering</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
+  </head>
+  <body>    
+    <div id = "app">
+      <input type = "text" v-on:keyup.enter="showinputvalue" v-bind:style = "styleobj" placeholder = "Enter a fruit name"/>
+      <h1 v-if="items.length>0">Fruits:</h1>
+      <ul>
+        <li v-for ="(item, index) in items">{{ index }} {{ item }}</li>
+        <!--<li v-for ="(item, index) in items">{{ index }} {{ item }}</li>-->
+      </ul>
+    </div>
+
+    <script>
+      const { createApp } = Vue;
+
+      var app = createApp({
+        data() {
+          return {
+            items:[],
+            styleobj: {
+              width: "30%",
+              padding: "12px 20px",
+              margin: "8px 0",
+              boxSizing: "border-box"
+            }
+          }
+        },
+        methods: {
+          showinputvalue: function(event) {
+            this.items.push(event.target.value);
+          }
+        }
+      }).mount('#app');        
+    </script>
+  </body>   
+</html>

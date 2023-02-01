@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VueJs binding classes</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
+  </head>
+  <body>
+    <style>
+      .info {
+        color: #00529B;
+        background-color: #BDE5F8;
+      }
+      div {
+        margin: 10px 0;
+        padding: 12px;
+      }
+      .active {
+        color: #4F8A10;
+        background-color: #DFF2BF;
+      }
+      .displayError{
+        color: #D8000C;
+        background-color: #FFBABA;
+      }
+    </style>
+    <div id = "app">
+      <div v-bind:class ="{ active:isActive }"><b>{{ title }}</b></div>
+      <div class = "info" v-bind:class ="{ active: isActive, 'displayError': hasError }">
+        {{ title }}
+      </div>
+    </div>
+
+    <script>
+      const { createApp } = Vue;
+
+      var app = createApp({
+        data() {
+          return {
+            title: "This is a class binding example",
+            isActive: true,
+            hasError: true
+          }
+        }
+      }).mount('#app');        
+    </script>
+  </body>   
+</html>
