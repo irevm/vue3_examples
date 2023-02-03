@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VueJs event example</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
+  </head>
+  <body>    
+    <div id = "app">
+      <div v-bind:style="styleobj" v-on:mouseover="changebgcolor" v-on:mouseout="originalcolor"></div>
+    </div>
+
+    <script>
+      const { createApp } = Vue;
+
+      var app = createApp({
+        data() {
+          return {
+            num1: 100,
+            num2: 200,
+            total: '',
+            styleobj: {
+              width: "100px",
+              height: "100px",
+              backgroundColor: "red"
+            }
+          }
+        },
+        methods : {
+          changebgcolor: function() {
+            this.styleobj.backgroundColor = "green";
+          },
+          originalcolor: function() {
+            this.styleobj.backgroundColor = "red";
+          }
+        }
+      }).mount('#app');        
+    </script>
+  </body>   
+</html>

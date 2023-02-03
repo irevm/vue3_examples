@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VueJs event example</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
+  </head>
+  <body>    
+    <div id = "app">
+      <button v-on:click="displaynumbers">Click me</button>
+      <h2> The result of 100 + 200 = {{ total }}</h2>
+    </div>
+
+    <script>
+      const { createApp } = Vue;
+
+      var app = createApp({
+        data() {
+          return {
+            num1: 100,
+            num2 : 200,
+            total : ''
+          }
+        },
+        methods : {
+          displaynumbers : function(event) {
+            console.log(event);
+            return this.total = this.num1 + this.num2;
+          }
+        }
+      }).mount('#app');        
+    </script>
+  </body>   
+</html>

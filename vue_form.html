@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VueJs event example</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
+  </head>
+  <body>    
+    <div id="app">                        
+      <div id="form2">
+        <p v-if="errors.length">
+          <b v-for="(error, index) in errors" :key="index">{{ error }}</b>
+        </p>
+        <p>
+          <label for="name">Name: </label>
+          <input id="name" v-model="form.name" type="text" name="name" placeholder="Enter your name" />
+        </p>
+        <p>
+          <label for="message">Message: </label>
+          <textarea id="message" v-model="form.message" name="message" placeholder="Enter your message"></textarea>
+        </p>
+        <p>
+          <label for="checkbox">Do you want to subscribe to our newsletter? </label>
+          <input type="checkbox" id="checkbox" v-model="form.checked">              
+        </p>
+        <p>
+          <button @click="sendForm">Send</button>
+        </p>
+      </div>
+  
+      <div v-if="form.name">
+        <p>Your name is: {{ form.name }}</p>
+        <span>Message:</span>
+        <p style="white-space: pre-line;">{{ form.message }}</p>
+        <p>Subscription: {{ form.checked }}</p>
+      </div>
+      <ul>
+        <li v-for="(item, index) in list" :key="index">
+          {{ index }}
+          <p>Your name is: {{ item.name }}</p>
+          <span>Message:</span>
+          <p style="white-space: pre-line;">{{ item.message }}</p>
+          <p>Subscription: {{ item.checked }}</p>
+        </li>
+      </ul>      
+    </div>
+
+    <script>
+      const { createApp } = Vue;
+      var app = createApp({
+        data() {
+          return {
+            form : {
+              name: '',
+              message: "",
+              checked: false,
+            },
+            list: [],            
+            errors: []
+          }
+        },
+        methods : {
+          sendForm: function () {                        
+            if (this.form.name && this.form.message) {
+              console.log(this.form.name);
+              console.log(this.form.message);
+              console.log(this.form.checked);
+
+              this.list.push({
+                name: this.form.name,
+                message: this.form.message,
+                checked: this.form.checked,
+              });
+
+              console.log(this.list);
+                
+            } else {
+              this.errors = [];      
+              if (!this.form.name || !this.form.message) {
+                this.errors.push("All fields are required");
+              }         
+            }
+          }
+        }
+      }).mount('#app');        
+    </script>
+    <style>
+      #app {
+        font-family: "Avenir", Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #2c3e50;
+        margin-top: 60px;
+      }
+    </style>
+  </body>   
+</html>
