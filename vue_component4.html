@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VueJs component example</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
+  </head>
+  <body>    
+    <div id="app">  
+      <p><b>First way:</b></p>        
+      <div class="plans">
+        <div class="plan">
+          <div class="description">
+            <span class="title">
+              The Single
+            </span>
+          </div>
+        </div>
+        <div class="plan">
+          <div class="description">
+            <span class="title">
+              The Curious
+            </span>
+          </div>
+        </div>
+        <div class="plan">
+          <div class="description">
+            <span class="title">
+              The Addict
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <p><b>Second way:</b></p> 
+      <plan name="The Single"></plan>
+      <plan name="The Curious"></plan>
+      <plan name="The Addict"></plan>
+
+      <p><b>Third way:</b></p> 
+      <plan v-for="plan in plans" v-bind:name="plan" :key="plan"></plan>
+    </div>
+
+    <script type="text/x-template" id="plan-template">
+      <div class="plan">
+        <div class="description">
+          <span class="title">
+            {{ name }}
+          </span>
+        </div>
+      </div>
+    </script>
+
+    <script>      
+      const { createApp } = Vue;
+
+      const Plan = {
+        template: '#plan-template',
+        props: ['name'],
+        // props: {
+        //   name: {
+        //     type: String,
+        //     default: '',
+        //     required: true
+        //   }
+        // }
+      };
+     
+      const app = createApp({
+        data() {
+          return {
+            plans: ['The Single', 'The Curious', 'The Addict']
+          }
+        },
+        components: {
+          Plan,
+        },
+      }).mount('#app'); 
+             
+    </script>
+    <style>
+      #app {
+        font-family: "Avenir", Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #2c3e50;
+        margin-top: 60px;
+      }
+    </style>
+  </body>   
+</html>

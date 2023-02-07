@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VueJs component example</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
+  </head>
+  <body>    
+  
+    <div id="app">
+      <div v-bind:style="{ fontSize: postFontSize + 'em' }">
+        <blog-post
+          v-for="p in posts"
+          v-bind:key="p.id"
+          v-bind:post="p"
+          v-on:enlarge-text="enlargeText"
+        ></blog-post>
+      </div>
+    </div>
+
+    <script type="module">
+      import BlogPost from "./BlogPost.js";
+    
+      const { createApp } = Vue;
+     
+      const app = createApp({
+        data: function(){
+          return {
+            posts: [
+              { id: 1, title: 'My journey with Vue', content: '<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>' },
+              { id: 2, title: 'Blogging with Vue', content: '<p>Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>'},
+              { id: 3, title: 'Why Vue is so fun', content: '<p>Donec eu libero sit amet quam egestas semper.</p>'}
+            ],
+            postFontSize: 1
+          }
+        },
+        components: {
+          BlogPost
+        },
+        methods:{
+          enlargeText(val){
+            this.postFontSize += val
+          }
+        }
+      }).mount('#app'); 
+             
+    </script>
+    <style>
+      #app {
+        font-family: "Avenir", Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #2c3e50;
+        margin-top: 60px;
+      }
+    </style>
+  </body>   
+</html>

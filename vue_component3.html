@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VueJs component example</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
+  </head>
+  <body>    
+    <div id="app">  
+      <button-counter></button-counter>
+      <button-counter></button-counter>           
+    </div>
+
+    <script type="module">
+      import ButtonCounter from './ButtonCounter.js'
+      
+      const { createApp } = Vue;
+     
+      const app = createApp({
+        components: {
+          ButtonCounter,
+        },
+      }).mount('#app'); 
+             
+    </script>
+    <style>
+      #app {
+        font-family: "Avenir", Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #2c3e50;
+        margin-top: 60px;
+      }
+    </style>
+  </body>   
+</html>
