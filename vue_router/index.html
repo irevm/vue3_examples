@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VueJs router example</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
+    <script src="https://unpkg.com/vue-router@4.0.15/dist/vue-router.global.js"></script>
+  </head>
+  <body>    
+  
+    <div id="app">
+      <h1>Routing on a Vue App</h1>
+      <p>
+        <!-- use the router-link component for navigation. -->
+        <!-- specify the link by passing the `to` prop. -->
+        <!-- `<router-link>` will render an `<a>` tag with the correct `href` attribute -->
+        <router-link to="/">Go to Home</router-link>
+        <router-link to="/about">Go to About</router-link>
+        <router-link to="/hello?message=Good morning!">Go to hello</router-link>
+        <router-link to="/goodbye/bye bye">Go to Goodbye</router-link>
+        <router-link :to="{ name: 'Goodbye2', params: { message: 'bye bye' }}">Go to Goodbye</router-link>
+
+      </p>
+      <!-- route outlet -->
+      <!-- component matched by the route will render here -->
+      <router-view></router-view>
+    </div>
+
+    <script type="module">
+      import router from "./router.js";
+
+      const app = Vue.createApp({
+        
+      });
+      // Make sure to _use_ the router instance to make the whole app router-aware.
+      app.use(router);
+
+      app.mount('#app')
+            
+    </script>
+    <style>
+      #app {
+        font-family: "Avenir", Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #2c3e50;
+        margin-top: 60px;
+      }
+      a{
+        margin-right: 0.3em;
+      }
+    </style>
+  </body>   
+</html>
