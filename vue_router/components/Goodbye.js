@@ -1,7 +1,9 @@
 export default {
   name: 'Goodbye',
+  emits: ['changing'],
   methods:{
     gotohello: function(){
+      this.$emit('changing', "Changing from Goodbye");
       this.$router.push("/hello?message=Hi, I'm coming from Goodbye component");
     }
   },

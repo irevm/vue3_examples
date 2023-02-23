@@ -22,13 +22,25 @@
       </p>
       <!-- route outlet -->
       <!-- component matched by the route will render here -->
-      <router-view></router-view>
+      <router-view @changing="changeValue"></router-view>
+
+      <div>{{valueText}}</div>
     </div>
 
     <script type="module">
       import router from "./router.js";
 
       const app = Vue.createApp({
+        data(){
+          return{
+            valueText: ''
+          }
+        },
+        methods: {
+          changeValue(text){
+            this.valueText = text;
+          }
+        }
         
       });
       // Make sure to _use_ the router instance to make the whole app router-aware.
