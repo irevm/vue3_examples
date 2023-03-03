@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VueJs pinia example</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
+    <script src="https://unpkg.com/vue-demi"></script>
+    <script src="https://unpkg.com/pinia"></script>
+  </head>
+  <body>    
+  
+    <div id="app">
+      <button @click="increment">Count is: {{ count }}</button>
+    </div>
+
+    <script type="module">
+      import store from "./store.js";
+           
+      const pinia = Pinia.createPinia();
+
+      const app = Vue.createApp({
+        computed: {
+          ...Pinia.mapState(store, ['count'])
+        },
+        methods: {
+          ...Pinia.mapActions(store, ['increment'])
+        }        
+      });
+      app.use(pinia);
+      app.mount('#app');
+      
+    </script>
+    <style>
+      #app {
+        font-family: "Avenir", Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #2c3e50;
+        margin-top: 60px;
+      }
+      a{
+        margin-right: 0.3em;
+      }
+    </style>
+  </body>   
+</html>
