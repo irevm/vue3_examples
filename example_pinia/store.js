@@ -4,7 +4,7 @@ const store = Pinia.defineStore('counter', {
     double: (state) => state.count * 2,
   },
   actions: {
-    increment(state) {
+    increment() {
       this.count++;
     },
   },

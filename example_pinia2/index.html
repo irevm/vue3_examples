@@ -11,7 +11,7 @@
     <div id="app">
       <p>{{ count }}</p>
       <p>
-        <button @click="increment">+</button>
+        <Counter></Counter>
       </p>
       <div v-for="item in list" v-bind:key="item">
         <span>{{item}}</span> <input type="button" value="Delete item" @click="deleteItem(item)">
@@ -22,6 +22,7 @@
 
     <script type="module">
       import store from "./store.js";
+      import Counter from "./Counter.js";
            
       const pinia = Pinia.createPinia();
 
@@ -31,6 +32,9 @@
             text: ''
           }
         },
+        components: {
+          Counter
+        },
         computed: {
           ...Pinia.mapState(store, ['count']),
           ...Pinia.mapState(store, ['list'])
@@ -39,6 +43,10 @@
           ...Pinia.mapActions(store, ['increment']),
           ...Pinia.mapActions(store, ['addItem']),
           ...Pinia.mapActions(store, ['deleteItem'])
+        },
+        mounted(){
+          console.log(this.text);
+         // this.increment();
         }        
       });
       app.use(pinia);
