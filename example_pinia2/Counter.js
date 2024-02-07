@@ -2,7 +2,10 @@ import store from "./store.js";
 
 export default {
   methods: {
-    ...Pinia.mapActions(store, ['increment'])
+    ...Pinia.mapActions(store, ['increment']),
+    test(){
+      this.increment();
+    }
   },
-  template: '<button @click="increment">+</button>'
+  template: '<button @click="test">+</button>'
 }

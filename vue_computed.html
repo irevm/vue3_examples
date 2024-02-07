@@ -10,6 +10,7 @@
       LastName: <input type = "text" v-model = "lastname"/> <br/><br/>
       <h1>My name is {{ firstname }} {{ lastname }}</h1>
       <h1>Using computed method: {{ getfullname }}</h1>
+      <!-- <h1>Using method: {{ getfullnameM() }}</h1> -->
     </div>
 
     <script>
@@ -23,11 +24,17 @@
             birthyear: ""
           }
         },
+        // methods: {
+        //   getfullnameM: function(){
+        //     return this.firstname +" "+ this.lastname;
+        //   }
+        // },
         computed: {
           getfullname: function(){
             return this.firstname +" "+ this.lastname;
           }
         }
+        
       }).mount('#app');
         
     </script>

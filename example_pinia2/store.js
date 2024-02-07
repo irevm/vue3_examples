@@ -3,6 +3,11 @@ const store = Pinia.defineStore('counter', {
     count: 0,
     list: [] 
   }),
+  getters: {
+    // getUserById: (state) => {
+    //   return (email) => state.list.find((user) => user.email === email)
+    // },
+  },
   actions: {
     increment() {
       this.count++;

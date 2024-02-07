@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+
+  <div id="app">
+    <h1>{{ message }}</h1>
+    <p v-html="messagehtml"></p>
+
+    <p v-if="show">Show if</p>
+
+    <p v-if="num > 3">Show if num > 3 {{ hola.a}}</p>
+    <p v-else>Adeu</p>
+
+    <img v-bind:src="img" alt="" style="width: 200px;">
+   
+    <ul v-if="items.length">
+      <li v-for="(item, index) in items" v-bind:key="index">{{index}} <span>Nom: </span> {{item}}</li>
+    </ul>
+
+    <button v-on:click="sayHello">Click me</button>
+
+    <form>
+      <input v-model="form.name" type="text" name="name">
+      <input v-model="form.email" type="email" name="email">
+    </form>
+
+    <div>{{form.name}}</div>
+
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+
+    let app = createApp({
+      data() {
+        return {
+          form: {
+            name: '',
+            email: ''
+          },
+          message: 'Hello Vue!',
+          messagehtml: '<span>soc un span</span>',
+          show: false,
+          num: 5,
+          img: "images/img.jpg",
+          hola: { 
+            a: "a",
+            b: "b"
+          },
+          items: ["maria","joan","pere"]
+        }
+      },
+      methods:{
+        sayHello: function(e){
+          this.num += 1;
+          console.log(this.num + 1);
+          return this.num + 1;
+        }
+      }
+    }).mount('#app');
+  
+  </script>
+</body>
+</html>
