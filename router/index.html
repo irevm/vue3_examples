@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VueJs router example</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
+    <script src="https://unpkg.com/vue-router@4.0.15/dist/vue-router.global.js"></script>
+  </head>
+  <body>    
+  
+    <div id="app">
+      
+      <router-view v-bind:post="posts[0]"></router-view>
+      <Post :post="posts[1]"></Post>
+    </div>
+
+    <script type="module"> 
+      import router from "./router.js"
+      import Post from "./Post.js"
+
+      const app = Vue.createApp({
+        data(){
+          return{
+            posts: [
+              { id: 1, name: "Post title", content: "pepksignkjbd"},
+              { id: 2, name: "hola soc un component", content: "xdsfhdfpepksignkjbd"}
+            ]
+          }
+        },
+        components: {
+          Post
+        },
+        mounted(){
+          this.$router.push({name:"Home"});
+        }      
+        
+      }).use(router).mount('#app');
+            
+    </script>
+    <style>
+      #app {
+        font-family: "Avenir", Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #2c3e50;
+        margin-top: 60px;
+      }
+      a{
+        margin-right: 0.3em;
+      }
+    </style>
+  </body>   
+</html>

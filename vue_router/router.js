@@ -5,6 +5,7 @@ const Home = { template: '<div>Home</div>' }
 const About = { template: '<div>About</div>' }
 
 let router = VueRouter.createRouter({
+  // history: VueRouter.createWebHashHistory(), //#
   history: VueRouter.createWebHistory(),
   routes: [
     { path: '/', name: "Home", component: Home },
